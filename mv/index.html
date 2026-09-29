@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JEPA — Predict What Matters</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #030409; color: #eef2ff; font-family: 'Inter', sans-serif; }
+  body.render { overflow: hidden; }
+  body.render #ui { display: none; }
+  body.render #stage { position: static; }
+  body.render canvas { width: auto !important; height: auto !important; }
+  #stage { position: fixed; inset: 0 0 64px 0; display: flex; align-items: center; justify-content: center; }
+  canvas { display: block; box-shadow: 0 0 60px rgba(120, 90, 255, 0.15); }
+  #ui { position: fixed; left: 0; right: 0; bottom: 0; height: 64px; display: flex; gap: 12px; align-items: center; padding: 0 16px; box-sizing: border-box; background: #0a0c1c; border-top: 1px solid #1c2044; }
+  button { background: #1a1f45; color: #eef2ff; border: 1px solid #2c3370; border-radius: 8px; padding: 8px 14px; font: 600 14px 'Inter', sans-serif; cursor: pointer; }
+  button:hover { background: #242a5c; }
+  button[aria-pressed="true"] { background: #3a2f8a; border-color: #6d5cff; }
+  input[type=range] { flex: 1; min-width: 60px; accent-color: #a98bff; }
+  #time { font: 500 13px 'JetBrains Mono', monospace; color: #8b93c7; min-width: 96px; text-align: right; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="mv"></canvas></div>
+<div id="ui">
+  <button id="play">▶ Play</button>
+  <button id="a169" aria-pressed="true">16:9</button>
+  <button id="a916" aria-pressed="false">9:16</button>
+  <input id="seek" type="range" min="0" max="192" step="0.01" value="0">
+  <span id="time">0:00 / 3:12</span>
+</div>
+<audio id="audio" src="soundtrack.m4a" preload="auto"></audio>
+<script src="timing.js"></script>
+<script src="mv.js"></script>
+<script>
+(function () {
+  const q = new URLSearchParams(location.search);
+  const canvas = document.getElementById('mv');
+  const render = q.has('render');
+  let aspect = q.get('aspect') || '16x9';
+  const size = (a) => (a === '9x16' ? [1080, 1920] : [1920, 1080]);
+
+  window.MV_READY = (async () => {
+    const fams = ["700 20px 'Space Grotesk'", "500 20px 'Space Grotesk'", "400 20px 'Inter'", "600 20px 'Inter'",
+      "800 20px 'Inter'", "400 20px 'JetBrains Mono'", "700 20px 'JetBrains Mono'", "700 20px 'JetBrains Mono'"];
+    await Promise.all(fams.map((f) => document.fonts.load(f, 'AaΘθτγ∇')));
+    await document.fonts.ready;
+    const [w, h] = size(aspect);
+    MV.init(canvas, +(q.get('w') || w), +(q.get('h') || h));
+    return true;
+  })();
+
+  if (render) { document.body.classList.add('render'); return; }
+
+  const audio = document.getElementById('audio');
+  const seek = document.getElementById('seek');
+  const time = document.getElementById('time');
+  const play = document.getElementById('play');
+  const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  function fit() {
+    const box = document.getElementById('stage').getBoundingClientRect();
+    const [w, h] = size(aspect);
+    const k = Math.min(box.width / w, box.height / h);
+    canvas.style.width = `${w * k}px`; canvas.style.height = `${h * k}px`;
+  }
+  function setAspect(a) {
+    aspect = a;
+    document.getElementById('a169').setAttribute('aria-pressed', a === '16x9');
+    document.getElementById('a916').setAttribute('aria-pressed', a === '9x16');
+    const [w, h] = size(a); MV.init(canvas, w, h); fit(); MV.renderFrame(audio.currentTime);
+  }
+  window.MV_READY.then(() => {
+    fit(); MV.renderFrame(0);
+    addEventListener('resize', fit);
+    document.getElementById('a169').onclick = () => setAspect('16x9');
+    document.getElementById('a916').onclick = () => setAspect('9x16');
+    play.onclick = () => (audio.paused ? audio.play() : audio.pause());
+    audio.onplay = () => (play.textContent = '❚❚ Pause');
+    audio.onpause = () => (play.textContent = '▶ Play');
+    seek.oninput = () => { audio.currentTime = +seek.value; MV.renderFrame(+seek.value); };
+    (function loop() {
+      const t = audio.currentTime;
+      if (!audio.paused) { MV.renderFrame(t); seek.value = t; }
+      time.textContent = `${fmt(t)} / ${fmt(MV.duration)}`;
+      requestAnimationFrame(loop);
+    })();
+  });
+})();
+</script>
+</body>
+</html>

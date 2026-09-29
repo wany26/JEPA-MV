@@ -1,0 +1,77 @@
+{
+  "title": "Predict What Matters (J.E.P.A.)",
+  "bpm": 120,
+  "duration": 192,
+  "sections": [
+    { "name": "intro",   "bar": 0,  "bars": 8,  "chords": ["Am", "F", "C", "G", "Am", "F", "Dm", "E"] },
+    { "name": "verse1",  "bar": 8,  "bars": 16, "chords": ["Am", "F", "C", "G", "Am", "F", "C", "G", "Am", "F", "C", "G", "Am", "F", "C", "G"] },
+    { "name": "pre",     "bar": 24, "bars": 8,  "chords": ["F", "G", "Am", "Am", "F", "G", "E", "E"] },
+    { "name": "chorus1", "bar": 32, "bars": 16, "chords": ["F", "G", "Am", "Em", "F", "G", "Am", "Am", "F", "G", "Am", "Em", "F", "G", "E", "E"] },
+    { "name": "verse2",  "bar": 48, "bars": 16, "chords": ["Am", "F", "C", "G", "Am", "F", "C", "G", "Am", "F", "C", "G", "Am", "F", "C", "G"] },
+    { "name": "bridge",  "bar": 64, "bars": 8,  "chords": ["F", "C", "G", "Am", "F", "C", "G", "F#"] },
+    { "name": "chorus2", "bar": 72, "bars": 16, "chords": ["G", "A", "Bm", "F#m", "G", "A", "Bm", "Bm", "G", "A", "Bm", "F#m", "G", "A", "F#", "F#"] },
+    { "name": "outro",   "bar": 88, "bars": 8,  "chords": ["Bm", "G", "D", "A", "Bm", "G", "Em", "Bm"] }
+  ],
+
+  "narration": [
+    { "t": 1.0,   "max": 5.6, "style": "quote", "say": "How could machines learn as efficiently as humans and animals?", "show": "“How could machines learn as efficiently as humans and animals?”" },
+    { "t": 8.0,   "max": 4.2, "style": "quote", "say": "How could machines learn to reason, and plan?", "show": "“How could machines learn to reason and plan?”" },
+
+    { "t": 16.0,  "max": 3.7, "say": "A baby learns how the world works, just by watching.", "show": "A baby learns how the world works, just by *watching*." },
+    { "t": 20.0,  "max": 3.7, "say": "No labels. No teacher. Just the world, rolling on.", "show": "No labels. No teacher. Just the world, rolling on." },
+    { "t": 24.0,  "max": 3.7, "say": "So we taught machines to guess what happens next,", "show": "So we taught machines to guess what happens next," },
+    { "t": 28.0,  "max": 3.7, "say": "by painting every single pixel of the future.", "show": "by painting *every single pixel* of the future." },
+    { "t": 32.0,  "max": 3.7, "say": "But the future is uncertain. Leaves flutter. Water ripples.", "show": "But the future is *uncertain*. Leaves flutter. Water ripples." },
+    { "t": 36.0,  "max": 3.7, "say": "Predict every pixel, and all those futures blur together.", "show": "Predict every pixel, and all those futures *blur* together." },
+    { "t": 40.0,  "max": 3.7, "say": "Most of those details can never be predicted,", "show": "Most of those details can *never* be predicted," },
+    { "t": 44.0,  "max": 3.7, "say": "and most of them don't even matter.", "show": "and most of them don't even *matter*." },
+
+    { "t": 48.0,  "max": 3.6, "say": "So don't predict the pixels.", "show": "So don't predict the *pixels*." },
+    { "t": 52.0,  "max": 3.6, "say": "Predict the meaning.", "show": "Predict the *meaning*." },
+    { "t": 56.0,  "max": 3.7, "say": "Map the world into an abstract space,", "show": "Map the world into an *abstract space*," },
+    { "t": 60.0,  "max": 1.9, "say": "and predict it there.", "show": "and predict it *there*." },
+
+    { "t": 96.0,  "max": 3.7, "say": "But there's a catch. If every input lands on the same point,", "show": "But there's a catch. If every input lands on the *same point*," },
+    { "t": 100.0, "max": 3.7, "say": "every prediction is perfect, and the model learns nothing.", "show": "every prediction is perfect, and the model learns *nothing*." },
+    { "t": 104.0, "max": 3.7, "say": "So keep the embeddings spread out, and decorrelated.", "show": "So keep the embeddings *spread out*, and *decorrelated*." },
+    { "t": 108.0, "max": 3.7, "say": "Or let the target encoder slowly follow, as a moving average.", "show": "Or let the target encoder slowly follow, as a *moving average*." },
+    { "t": 112.0, "max": 3.7, "say": "Eye Jeppa shows the model one block of an image,", "show": "*I-JEPA* shows the model one block of an image," },
+    { "t": 116.0, "max": 3.7, "say": "and asks it to predict the features of the missing blocks.", "show": "and asks it to predict the *features* of the missing blocks." },
+    { "t": 120.0, "max": 3.7, "say": "No hand-crafted augmentations. No pixels to rebuild.", "show": "No hand-crafted augmentations. No pixels to rebuild." },
+    { "t": 124.0, "max": 3.7, "say": "Just meaning, predicted from meaning.", "show": "Just *meaning*, predicted from *meaning*." },
+
+    { "t": 128.0, "max": 3.7, "say": "Then came video. Vee Jeppa masks out space and time,", "show": "Then came video. *V-JEPA* masks out space and time," },
+    { "t": 132.0, "max": 3.7, "say": "and picks up motion, even intuitive physics, just by watching.", "show": "and picks up motion, even *intuitive physics*, just by watching." },
+    { "t": 136.0, "max": 3.7, "say": "Vee Jeppa two became a world model a robot can plan with,", "show": "*V-JEPA 2* became a *world model* a robot can plan with," },
+    { "t": 140.0, "max": 1.9, "say": "imagining the future.", "show": "imagining the *future*." },
+
+    { "t": 176.0, "max": 3.7, "style": "big", "say": "Not every pixel. Not every detail.", "show": "Not every pixel. Not every detail." },
+    { "t": 180.0, "max": 3.0, "style": "big", "say": "Predict what matters.", "show": "Predict what *matters*." }
+  ],
+
+  "robot": {
+    "letters": [
+      { "t": 14.0,  "notes": [64, 68, 71, 76] },
+      { "t": 62.0,  "notes": [64, 68, 71, 76] },
+      { "t": 142.0, "notes": [66, 70, 73, 78] }
+    ],
+    "choruses": [
+      { "t": 64.0,  "transpose": 0, "phrases": ["hook", "encode", "predict", "minimize", "hook", "noise", "learn", "jepa"] },
+      { "t": 144.0, "transpose": 2, "phrases": ["hook", "encode", "predict", "minimize", "hook", "stack", "plan", "jepa"] }
+    ],
+    "phrases": {
+      "hook":     { "notes": [69, 72, 74, 71], "chunks": [["Joint", "JOINT"], ["Embedding", "EMBEDDING"], ["Predictive", "PREDICTIVE"], ["Architecture", "ARCHITECTURE"]] },
+      "encode":   { "notes": [76, 72, 71, 67], "chunks": [["Encode", "ENCODE"], ["the context", "THE CONTEXT"], ["encode", "ENCODE"], ["the target", "THE TARGET"]] },
+      "predict":  { "notes": [69, 72, 74, 71], "chunks": [["Predict", "PREDICT"], ["the embedding", "THE EMBEDDING"], ["not", "NOT"], ["the pixels", "THE PIXELS"]] },
+      "minimize": { "notes": [72, 76, 74, 69], "chunks": [["Minimize", "MINIMIZE"], ["the distance", "THE DISTANCE"], ["in", "IN"], ["latent space", "LATENT SPACE"]] },
+      "noise":    { "notes": [76, 72, 71, 67], "chunks": [["Throw away", "THROW AWAY"], ["the noise", "THE NOISE"], ["keep", "KEEP"], ["what matters", "WHAT MATTERS"]] },
+      "learn":    { "notes": [69, 72, 74, 71], "chunks": [["Learn", "LEARN"], ["the world", "THE WORLD"], ["by", "BY"], ["watching it", "WATCHING IT"]] },
+      "stack":    { "notes": [76, 72, 71, 67], "chunks": [["Stack them", "STACK THEM"], ["up high", "UP HIGH"], ["short term", "SHORT TERM"], ["long term", "LONG TERM"]] },
+      "plan":     { "notes": [69, 72, 74, 71], "chunks": [["Watch", "WATCH"], ["the world", "THE WORLD"], ["and", "AND"], ["plan ahead", "PLAN AHEAD"]] },
+      "jepa":     { "notes": [64, 68, 71, 76], "chunks": [["Jay", "J"], ["Ee", "E"], ["Pee", "P"], ["Ay", "A"]] }
+    },
+    "echo": [
+      { "t": 184.0, "note": 66, "slot": 2.0, "say": "what matters", "show": "what matters" }
+    ]
+  }
+}
